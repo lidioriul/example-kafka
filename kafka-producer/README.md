@@ -50,11 +50,11 @@
 ```
 
 ### Passo 2. Incluir no arquivo application.properties. O spring vai pegar e substituir o que estiver dentro do @
-
-> example.profile=@exampleProfile@
-> examplo.spring.datasource.username=@db.username@
-> examplo.spring.datasource.password=@db.password@
-
+```
+example.profile=@exampleProfile@
+exemplo.spring.datasource.username=@db.username@
+exemplo.spring.datasource.password=@db.password@
+```
 
 ### Passo 3. Para visualizar é só chamar no código utilizando o @Value
 
