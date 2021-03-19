@@ -16,6 +16,9 @@
         <sonar.host.url>http://192.168.25.14:9000</sonar.host.url>
         <sonar.login>admin</sonar.login>
         <sonar.password>ad</sonar.password>
+
+        <db.username></db.username>
+        <db.password></db.password>
     </properties>
 
     <parent>
@@ -44,9 +47,54 @@
 <!--        </dependency>-->
     </dependencies>
 
-<!--    <build>-->
-<!--        <pluginManagement>-->
-<!--            <plugins>-->
+    <profiles>
+        <profile>
+            <id>teste</id>
+            <properties>
+                <exampleProfile>profile-teste</exampleProfile>
+                <db.username>root</db.username>
+                <db.password>root</db.password>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>dev</id>
+            <properties>
+                <exampleProfile>profile-dev</exampleProfile>
+                <db.username>dev</db.username>
+                <db.password>dev</db.password>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>hmg</id>
+            <properties>
+                <exampleProfile>profile-hmg</exampleProfile>
+                <db.username>prod</db.username>
+                <db.password>!@dsada31231=</db.password>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+<!--                    <configuration>-->
+<!--                        <profiles>${exampleProfile}</profiles>-->
+<!--                    </configuration>-->
+                </plugin>
 <!--                <plugin>-->
 <!--                    <artifactId>maven-clean-plugin</artifactId>-->
 <!--                    <version>3.1.0</version>-->
@@ -83,7 +131,18 @@
 <!--                    <artifactId>maven-project-info-reports-plugin</artifactId>-->
 <!--                    <version>3.0.0</version>-->
 <!--                </plugin>-->
-<!--            </plugins>-->
-<!--        </pluginManagement>-->
-<!--    </build>-->
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <url>https://repo.spring.io/snapshot</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <url>https://repo.spring.io/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
