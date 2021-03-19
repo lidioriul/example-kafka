@@ -1,8 +1,8 @@
-Para utilizar valores variaveis dentro do application.properties usando Spring Boot
+## Para utilizar valores variaveis dentro do application.properties usando Spring Boot
 
-Passo 1. Incluir propriedades, profiles e plugins no arquivo pom.xml
+### Passo 1: Incluir propriedades, profiles e plugins no arquivo pom.xml
 
-...
+```
 <properties>
   <db.username></db.username>
   <db.password></db.password>
@@ -47,24 +47,24 @@ Passo 1. Incluir propriedades, profiles e plugins no arquivo pom.xml
     </plugins>
   </pluginManagement>
 </build>
-...
+```
 
-Passo 2. Incluir no arquivo application.properties. O spring vai pegar e substituir o que estiver dentro do @
+### Passo 2. Incluir no arquivo application.properties. O spring vai pegar e substituir o que estiver dentro do @
 
-example.profile=@exampleProfile@
-examplo.spring.datasource.username=@db.username@
-examplo.spring.datasource.password=@db.password@
+> example.profile=@exampleProfile@
+> examplo.spring.datasource.username=@db.username@
+> examplo.spring.datasource.password=@db.password@
 
 
-Passo 3. Para visualizar é só chamar no código utilizando o @Value
+### Passo 3. Para visualizar é só chamar no código utilizando o @Value
 
-...
+```
 @Value("${examplo.spring.datasource.username}")
 private String dbUsername;
 @Value("${examplo.spring.datasource.password}")
 private String dbPassword;
-...
+```
 
-Passo 4. Para executar rodar o sistema vc deve incluir -P<id_profile>
+### Passo 4. Para executar rodar o sistema vc deve incluir -P *<id_profile>*
 
-Por exemplo: mvn spring-boot: run -P<id_profile>
+> **Por exemplo:** mvn spring-boot: run -P *<id_profile>*
